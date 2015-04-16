@@ -51,7 +51,7 @@ public class RingBufferDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public E peekFront() throws EmptyCollectionException {
-		if(array[0] == null) {
+		if(isEmpty()) {
 			throw new EmptyCollectionException("Ringbuffer DeQueue is Empty");
 		}
 		return array[0];
@@ -59,7 +59,7 @@ public class RingBufferDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public E peekRear() throws EmptyCollectionException {
-		if(array[0] == null) {
+		if(isEmpty()) {
 			throw new EmptyCollectionException("Ringbuffer DeQueue is Empty");
 		}
 		return array[rear - 1];

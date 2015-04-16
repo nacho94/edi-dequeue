@@ -73,7 +73,7 @@ public class LinkedDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public E peekFront() throws EmptyCollectionException {
-		if(front == null) {
+		if(isEmpty()) {
 			throw new EmptyCollectionException("Linked DeQueue is Empty");
 		}
 		return front.obj;
@@ -81,7 +81,7 @@ public class LinkedDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public E peekRear() throws EmptyCollectionException {
-		if(rear == null) {
+		if(isEmpty()) {
 			throw new EmptyCollectionException("Linked DeQueue is Empty");
 		}
 		return rear.obj;

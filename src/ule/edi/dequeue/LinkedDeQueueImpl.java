@@ -14,34 +14,20 @@ public class LinkedDeQueueImpl<E> implements DeQueue<E> {
 		}
 	}
 	
-	private Node list = null;
-	
-	private Node getLastNode() {
-		Node r = list;
-		while(r.next != null) {
-			r = r.next;
-		}
-		return r;
-	}
-	
-	private Node getFirstNode() {
-		Node r = list;
-		while(r.previous != null) {
-			r = r.previous;
-		}
-		return r;
-	}
+	private Node front = null;
+	private Node rear = null;
 	
 	@Override
 	public void enqueueRear(E element) {
 		Node n = new Node(element);
 		
-		if(list == null) {
-			list = n;
+		if(front == null && rear == null) {
+			front = n;
+			rear = n;
 		} else {
-			Node r = getLastNode();
-			r.next = n;
-			n.previous = r;
+			rear.next = n;
+			n.previous = rear;
+			rear = n;
 		}
 	}
 
@@ -49,25 +35,40 @@ public class LinkedDeQueueImpl<E> implements DeQueue<E> {
 	public void enqueueFront(E element) {
 		Node n = new Node(element);
 		
-		if(list == null) {
-			list = n;
+		if(front == null && rear == null) {
+			front = n;
+			rear = n;
 		} else {
-			Node r = getFirstNode();
-			r.previous = n;
-			n.next = r;
-		}	
+			front.previous = n;
+			n.next = front;
+			front = n;
+		}
 	}
 
 	@Override
 	public E dequeueFront() throws EmptyCollectionException {
-		// TODO Auto-generated method stub
-		return null;
+		Node r = front;
+		
+		if(front == rear) {
+			rear = front = null;
+		} else {
+			front = front.next;
+			front.previous = null;
+		}
+		return r.obj;
 	}
 
 	@Override
 	public E dequeueRear() throws EmptyCollectionException {
-		// TODO Auto-generated method stub
-		return null;
+		Node r = front;
+		
+		if(front == rear) {
+			rear = front = null;
+		} else {
+			rear = rear.previous;
+			rear.next = null;
+		}
+		return r.obj;
 	}
 
 	@Override

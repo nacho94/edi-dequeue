@@ -39,8 +39,15 @@ public class RingBufferDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public E dequeueFront() throws EmptyCollectionException {
-		// TODO Auto-generated method stub
-		return null;
+		if(isEmpty()) {
+			throw new EmptyCollectionException("Ringbuffer DeQueue is Empty");
+		}
+		
+		E obj = array[0];
+		array[0] = null;
+		rear--;
+		System.arraycopy(array, 1, array, 0, rear);
+		return obj;
 	}
 
 	@Override

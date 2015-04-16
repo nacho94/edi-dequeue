@@ -73,14 +73,18 @@ public class LinkedDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public E peekFront() throws EmptyCollectionException {
-		// TODO Auto-generated method stub
-		return null;
+		if(front == null) {
+			throw new EmptyCollectionException("Linked DeQueue is Empty");
+		}
+		return front.obj;
 	}
 
 	@Override
 	public E peekRear() throws EmptyCollectionException {
-		// TODO Auto-generated method stub
-		return null;
+		if(rear == null) {
+			throw new EmptyCollectionException("Linked DeQueue is Empty");
+		}
+		return rear.obj;
 	}
 
 	@Override

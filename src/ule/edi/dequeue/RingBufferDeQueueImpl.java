@@ -51,14 +51,18 @@ public class RingBufferDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public E peekFront() throws EmptyCollectionException {
-		// TODO Auto-generated method stub
-		return null;
+		if(array[0] == null) {
+			throw new EmptyCollectionException("Ringbuffer DeQueue is Empty");
+		}
+		return array[0];
 	}
 
 	@Override
 	public E peekRear() throws EmptyCollectionException {
-		// TODO Auto-generated method stub
-		return null;
+		if(array[0] == null) {
+			throw new EmptyCollectionException("Ringbuffer DeQueue is Empty");
+		}
+		return array[rear - 1];
 	}
 
 	@Override

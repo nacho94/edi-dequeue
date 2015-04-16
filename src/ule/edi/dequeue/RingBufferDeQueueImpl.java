@@ -67,8 +67,7 @@ public class RingBufferDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return rear == 0;
 	}
 
 }

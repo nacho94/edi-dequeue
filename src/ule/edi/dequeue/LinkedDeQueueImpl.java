@@ -21,7 +21,7 @@ public class LinkedDeQueueImpl<E> implements DeQueue<E> {
 	public void enqueueRear(E element) {
 		Node n = new Node(element);
 		
-		if(front == null && rear == null) {
+		if(isEmpty()) {
 			front = n;
 			rear = n;
 		} else {
@@ -35,7 +35,7 @@ public class LinkedDeQueueImpl<E> implements DeQueue<E> {
 	public void enqueueFront(E element) {
 		Node n = new Node(element);
 		
-		if(front == null && rear == null) {
+		if(isEmpty()) {
 			front = n;
 			rear = n;
 		} else {
@@ -47,6 +47,9 @@ public class LinkedDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public E dequeueFront() throws EmptyCollectionException {
+		if(isEmpty()) {
+			throw new EmptyCollectionException("Linked DeQueue is Empty");
+		}
 		Node r = front;
 		
 		if(front == rear) {
@@ -60,6 +63,9 @@ public class LinkedDeQueueImpl<E> implements DeQueue<E> {
 
 	@Override
 	public E dequeueRear() throws EmptyCollectionException {
+		if(isEmpty()) {
+			throw new EmptyCollectionException("Linked DeQueue is Empty");
+		}
 		Node r = front;
 		
 		if(front == rear) {

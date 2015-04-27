@@ -6,6 +6,7 @@ import ule.edi.EmptyCollectionException;
 
 public class RingBufferDeQueueImpl<E> implements DeQueue<E> {
 	private final int RESERVATION_SIZE = 5;
+	@SuppressWarnings("unchecked")
 	private E[] array = (E[]) new Object[RESERVATION_SIZE];
 	private int arraySize = 0;
 	private int rear = 0;
